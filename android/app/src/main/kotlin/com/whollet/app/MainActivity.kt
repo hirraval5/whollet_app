@@ -1,4 +1,4 @@
-package com.whollet.app.whollet_app
+package com.whollet.app
 
 import io.flutter.embedding.android.FlutterActivity
 
