@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 import 'package:whollet_app/app/app.dart';
 import 'package:whollet_app/app/user/model/model.dart';
+import 'package:whollet_app/app/user/user.dart';
 
-base class UserController extends BaseGetXController with SingletonsMixin {
+base class UserController extends BaseGetXController {
   final Rxn<UserModel> userModel = Rxn();
+
+  late final _userService = UserService(context);
 
   UserController(super.context);
 

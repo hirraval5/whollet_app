@@ -41,7 +41,7 @@ abstract class BaseApiRequest<T extends Object?> with LogMixin, SingletonsMixin 
   Object? _data;
   ResponseParser<T> responseParser;
 
-  String get _baseUrl => "http://103.206.139.86:8092/";
+  String get _baseUrl => environment.baseUrl;
 
   set headers(Map<String, String> value) => _headers = value;
 
@@ -62,9 +62,7 @@ abstract class BaseApiRequest<T extends Object?> with LogMixin, SingletonsMixin 
     };
   }
 
-  bool _logEnabled = true;
-
-  set logEnabled(bool value) => _logEnabled = value;
+  bool get _logEnabled => environment.isLogEnabled;
 
   Future<ApiResponse<T>> fetch() async {
     final baseReq = _baseRequest.copyWith(headers: {...?_headers, ..._defaultHeaders});

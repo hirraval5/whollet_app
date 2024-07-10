@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:whollet_app/app/app.dart';
 
 enum LogLevel {
   debug(208),
