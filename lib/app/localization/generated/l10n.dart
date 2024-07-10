@@ -12,60 +12,71 @@ import 'intl/messages_all.dart';
 // ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
 // ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
 
-class ShoppeLocalization {
-  ShoppeLocalization();
+class WholletLocalization {
+  WholletLocalization();
 
-  static ShoppeLocalization? _current;
+  static WholletLocalization? _current;
 
-  static ShoppeLocalization get current {
+  static WholletLocalization get current {
     assert(_current != null,
-        'No instance of ShoppeLocalization was loaded. Try to initialize the ShoppeLocalization delegate before accessing ShoppeLocalization.current.');
+        'No instance of WholletLocalization was loaded. Try to initialize the WholletLocalization delegate before accessing WholletLocalization.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
-  static Future<ShoppeLocalization> load(Locale locale) {
+  static Future<WholletLocalization> load(Locale locale) {
     final name = (locale.countryCode?.isEmpty ?? false)
         ? locale.languageCode
         : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      final instance = ShoppeLocalization();
-      ShoppeLocalization._current = instance;
+      final instance = WholletLocalization();
+      WholletLocalization._current = instance;
 
       return instance;
     });
   }
 
-  static ShoppeLocalization of(BuildContext context) {
-    final instance = ShoppeLocalization.maybeOf(context);
+  static WholletLocalization of(BuildContext context) {
+    final instance = WholletLocalization.maybeOf(context);
     assert(instance != null,
-        'No instance of ShoppeLocalization present in the widget tree. Did you add ShoppeLocalization.delegate in localizationsDelegates?');
+        'No instance of WholletLocalization present in the widget tree. Did you add WholletLocalization.delegate in localizationsDelegates?');
     return instance!;
   }
 
-  static ShoppeLocalization? maybeOf(BuildContext context) {
-    return Localizations.of<ShoppeLocalization>(context, ShoppeLocalization);
+  static WholletLocalization? maybeOf(BuildContext context) {
+    return Localizations.of<WholletLocalization>(context, WholletLocalization);
+  }
+
+  /// `How are you`
+  String get howAreYou {
+    return Intl.message(
+      'How are you',
+      name: 'howAreYou',
+      desc: '',
+      args: [],
+    );
   }
 }
 
 class AppLocalizationDelegate
-    extends LocalizationsDelegate<ShoppeLocalization> {
+    extends LocalizationsDelegate<WholletLocalization> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'hi'),
     ];
   }
 
   @override
   bool isSupported(Locale locale) => _isSupported(locale);
   @override
-  Future<ShoppeLocalization> load(Locale locale) =>
-      ShoppeLocalization.load(locale);
+  Future<WholletLocalization> load(Locale locale) =>
+      WholletLocalization.load(locale);
   @override
   bool shouldReload(AppLocalizationDelegate old) => false;
 
