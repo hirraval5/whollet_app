@@ -3,7 +3,7 @@ import 'package:whollet_app/utils/firebase_helper.dart';
 
 import 'preference/preference.dart';
 
-mixin SingletonsMixin {
+mixin class SingletonsMixin {
   AppPreference? _preference;
   FirebaseNotificationHelper? _firebaseHelper;
   WholletEnvironment? _environment;

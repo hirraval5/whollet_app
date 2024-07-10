@@ -25,6 +25,7 @@ final class FirebaseNotificationHelper {
   late final FlutterLocalNotificationsPlugin _notificationPlugin = FlutterLocalNotificationsPlugin();
 
   Future<void> _initialize() async {
+    Log.debug("------------FirebaseNotificationHelper------------");
     await _initializeNotification();
     await _resolvePermission();
     await _resolvePlatformImplementation();
