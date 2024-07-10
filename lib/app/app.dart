@@ -29,6 +29,12 @@ class WholletApp extends StatefulWidget {
 }
 
 class _WholletAppState extends State<WholletApp> with SingletonsMixin {
+  String get _initialRoute {
+    if (preference.isLogin) return "";
+    if (preference.introCompleted) return "";
+    return "";
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -53,7 +59,7 @@ class _WholletAppState extends State<WholletApp> with SingletonsMixin {
             locale: Locale(language.languageCode),
             initialBinding: widget._dependency.call(context),
             getPages: AppRoutes().pages,
-            initialRoute: AppRoutes.dashboard,
+            initialRoute: _initialRoute,
             supportedLocales: WholletLocalization.delegate.supportedLocales,
             theme: ThemeData(extensions: [appColor]),
             localizationsDelegates: const [

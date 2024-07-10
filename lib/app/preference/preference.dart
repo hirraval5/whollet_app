@@ -17,6 +17,8 @@ final class AppPreference {
 
   factory AppPreference.getInstance() => instance ??= AppPreference._internal();
 
+  bool get isLogin => authentication != null;
+
   String get currentLanguageCode => _preference.getString("current_language_code") ?? "en";
 
   set currentLanguageCode(String value) => _preference.setString("current_language_code", value);
@@ -33,6 +35,10 @@ final class AppPreference {
 
   set authentication(UserAuthentication? value) =>
       value == null ? _preference.remove("user_authentication") : _setJsonData("user_authentication", value.toJson());
+
+  bool get introCompleted => _preference.getBool("intro_completed") ?? false;
+
+  set introCompleted(bool value) => _preference.setBool("intro_completed", value);
 
   _setJsonData(String key, Map<String, dynamic>? json) {
     if (json == null || json.isEmpty) {
