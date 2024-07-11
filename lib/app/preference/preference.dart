@@ -5,17 +5,9 @@ import 'package:whollet_app/app/user/model/user_authentication.dart';
 import 'package:whollet_app/app/user/model/user_model.dart';
 
 final class AppPreference {
-  static late final SharedPreferences _preference;
+  final SharedPreferences _preference;
 
-  AppPreference._internal();
-
-  static Future<void> initPreference() async {
-    _preference = await SharedPreferences.getInstance();
-  }
-
-  static AppPreference? instance;
-
-  factory AppPreference.getInstance() => instance ??= AppPreference._internal();
+  AppPreference(this._preference);
 
   bool get isLogin => authentication != null;
 

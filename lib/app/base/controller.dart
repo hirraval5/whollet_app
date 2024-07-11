@@ -10,7 +10,7 @@ void _defaultErrorHandler(Object? error, StackTrace stackTrace) {
   Log.debug(error);
 }
 
-base class BaseGetXController extends GetxController with SingletonsMixin {
+base class BaseGetXController extends GetxController {
   final BuildContext context;
 
   BaseGetXController(this.context);

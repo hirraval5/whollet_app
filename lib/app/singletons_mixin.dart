@@ -1,16 +1,18 @@
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:whollet_app/app/app.dart';
 import 'package:whollet_app/app/environment/environment.dart';
-import 'package:whollet_app/utils/firebase_helper.dart';
+import 'package:whollet_app/app/preference/preference.dart';
+import 'package:whollet_app/utils/utils.dart';
 
-import 'preference/preference.dart';
+mixin SingletonsMixin {
+  final _dependency = Get.find<GeneralDependency>();
 
-mixin class SingletonsMixin {
-  AppPreference? _preference;
-  FirebaseNotificationHelper? _firebaseHelper;
-  WholletEnvironment? _environment;
+  AppPreference get preference => _dependency.preference;
 
-  AppPreference get preference => _preference ??= AppPreference.getInstance();
+  FirebaseNotificationHelper get firebaseHelper => _dependency.firebaseNotificationHelper;
 
-  FirebaseNotificationHelper get firebaseHelper => _firebaseHelper ??= FirebaseNotificationHelper.getInstance();
+  WholletEnvironment get environment => _dependency.wholletEnvironment;
 
-  WholletEnvironment get environment => _environment ??= WholletEnvironment.fromArgument();
+  Dio get dio => _dependency.dio;
 }

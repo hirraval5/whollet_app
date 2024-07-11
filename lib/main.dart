@@ -10,30 +10,18 @@ void main() {
   _configureApp();
 }
 
-void _configureApp() {
+Future<void> _configureApp() async {
   return runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      await AppPreference.initPreference();
+      await Get.putAsync<GeneralDependency>(() async => GeneralDependency.getInstance(), permanent: true);
+      await Get.find<GeneralDependency>().initDependencies();
       return runApp(
-        WholletApp(
-          dependency: (context) => _GeneralDependencyBinding(context),
-        ),
+        const WholletApp(),
       );
     },
     (error, stack) {
       Log.error("ShoppeApp.Error -> $error");
     },
   );
-}
-
-class _GeneralDependencyBinding extends Bindings {
-  final BuildContext context;
-
-  _GeneralDependencyBinding(this.context);
-
-  @override
-  void dependencies() {
-    Get.put(UserController(context), permanent: true);
-  }
 }

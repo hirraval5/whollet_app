@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:whollet_app/app/routes/routes.dart';
 
+import 'di/dependency.dart';
 import 'localization/localization.dart';
 import 'singletons_mixin.dart';
 import 'theme/color.dart';
@@ -15,14 +16,12 @@ export 'localization/localization.dart';
 export 'theme/theme.dart';
 export 'singletons_mixin.dart';
 export 'base/base.dart';
+export 'di/di.dart';
 
 class WholletApp extends StatefulWidget {
   const WholletApp({
     super.key,
-    required Bindings Function(BuildContext context) dependency,
-  }) : _dependency = dependency;
-
-  final Bindings Function(BuildContext context) _dependency;
+  });
 
   @override
   State<WholletApp> createState() => _WholletAppState();
@@ -57,7 +56,6 @@ class _WholletAppState extends State<WholletApp> with SingletonsMixin {
           child: GetMaterialApp(
             themeMode: themeMode,
             locale: Locale(language.languageCode),
-            initialBinding: widget._dependency.call(context),
             getPages: AppRoutes().pages,
             initialRoute: _initialRoute,
             supportedLocales: WholletLocalization.delegate.supportedLocales,
