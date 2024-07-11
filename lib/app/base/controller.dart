@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:whollet_app/app/app.dart';
+import 'package:whollet_app/app/user/service/user_service.dart';
 import 'package:whollet_app/utils/utils.dart';
 
 typedef LoadingCallback = void Function(bool loading);
@@ -14,6 +15,9 @@ base class BaseGetXController extends GetxController {
   final BuildContext context;
 
   BaseGetXController(this.context);
+
+  final serviceDependencies = Get.find<ServiceDependency>();
+
 
   Future<T?> processRequest<T extends Object?>(
     Future<T?> Function() request, {

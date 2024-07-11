@@ -15,7 +15,7 @@ Future<void> _onBackgroundMessage(RemoteMessage message) async {
 
 final class FirebaseNotificationHelper {
   FirebaseNotificationHelper._internal() {
-    _initialize();
+    // _initialize();
   }
 
   static FirebaseNotificationHelper? instance;

@@ -8,7 +8,20 @@ base class UserController extends BaseGetXController with SingletonsMixin {
 
   UserController(super.context);
 
-  Future<void> getProfile() async {}
+  @override
+  void onInit() {
+    getProfile();
+    super.onInit();
+  }
+
+  late final _userService = serviceDependencies.userService;
+
+  Future<void> getProfile() async {
+    final user = processRequest(_userService.getProfile,onError: (error, stackTrace) {
+      print("errror $error");
+    },);
+    print("user $user");
+  }
 
   Future<void> updateProfile(UserModel userModel) async {}
 

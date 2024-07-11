@@ -16,6 +16,8 @@ Future<void> _configureApp() async {
       WidgetsFlutterBinding.ensureInitialized();
       await Get.putAsync<GeneralDependency>(() async => GeneralDependency.getInstance(), permanent: true);
       await Get.find<GeneralDependency>().initDependencies();
+      Get.put<ServiceDependency>(ServiceDependency.getInstance(), permanent: true);
+      Get.find<ServiceDependency>().initDependencies();
       return runApp(
         const WholletApp(),
       );

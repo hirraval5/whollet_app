@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:whollet_app/app/routes/routes.dart';
+import 'package:whollet_app/app/user/controller/user_controller.dart';
 
 import 'di/dependency.dart';
 import 'localization/localization.dart';
@@ -28,11 +29,11 @@ class WholletApp extends StatefulWidget {
 }
 
 class _WholletAppState extends State<WholletApp> with SingletonsMixin {
-  String get _initialRoute {
+ /* String get _initialRoute {
     if (preference.isLogin) return "";
     if (preference.introCompleted) return "";
     return "";
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,7 @@ class _WholletAppState extends State<WholletApp> with SingletonsMixin {
             themeMode: themeMode,
             locale: Locale(language.languageCode),
             getPages: AppRoutes().pages,
-            initialRoute: _initialRoute,
+            // initialRoute: _initialRoute,
             supportedLocales: WholletLocalization.delegate.supportedLocales,
             theme: ThemeData(extensions: [appColor]),
             localizationsDelegates: const [
